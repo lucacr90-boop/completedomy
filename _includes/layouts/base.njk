@@ -1,46 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>
-      {% if title %}
-        {{ title }} –
-      {% endif %}Domy v Itálii</title>
-    {# 🔹 Mantieni i tuoi CSS originali (percorsi storici): #}
-    <link rel="stylesheet" href="/style/style_edit22.css"/>
-    <link rel="stylesheet" href="/style/style58.css"/>
-    <link
-    rel="stylesheet" href="/imagebox/imagebox_3.css"/> {# Favicons originali se li usi #}
-    <link rel="icon" type="image/png" sizes="16x16" href="/style/favicon/favicon-16x16.png"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="/style/favicon/favicon-32x32.png"/>
-    <link rel="apple-touch-icon" href="/style/favicon/apple-touch-icon.png"/> {# 🔹 (IMPORTANTE) RIMOSSO qualsiasi meta refresh verso /maintenance.html #}
-    {# <meta http-equiv="refresh" content="0;url=/maintenance.html"/>  — ELIMINARE #}
-    {# JS storici caricati in head se necessario #}<script src="/jscripts/support60.js"> </script>
-    <script src="/jscripts/tiny_mce6/tinymce.min.js"></script>
-    <script src="/imagebox/imagebox_2.js"></script>
-  </head>
-  <body>
-    <!-- Qui resta invariato il tuo header/nav/logo etc.  -->
-    <div id="bg_underlayer"></div>
-    <div id="bg_layer"></div>
-    <div id="bg_bottom"></div>
-    <div id="wrapper">
-      <div id="header">
-        <a id="head_logo" href="/"><img src="/img/domyvitalii_logo.svg" alt="Domy v Itálii"/>
-        </a>
-        {# … il tuo menu/topbar rimane qui … #}
-      </div>
-      {# 🔹 SLOT CONTENUTO: dov’è sempre stata la tua area centrale #}
-      <div id="inner_content">
-        {{ content | safe }}
-      </div>
-      <div
-        id="footer">
-        {# Il tuo footer originale qui: 3 colonne, social, ecc. #}
-        <p>&copy; {{ "now" | date("yyyy") }} Domy v Itálii</p>
-      </div>
-    </div>
-    {# Se avevi script alla fine del body, mantienili qui #}
-    {# 🔹 SLOT SCRIPT DI PAGINA: le singole pagine possono iniettare JS #}
-  </body>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% if title %}{{ title }} — {% endif %}Domy v Itálii</title>
+  <meta name="description" content="{{ description | default('Domy v Itálii — Poradenství pro koupi domu v Itálii') }}"/>
+
+  <link rel="preconnect" href="https://js.stripe.com" />
+  <link rel="stylesheet" href="/assets/site.css"/>
+
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu, Cantarell, sans-serif; margin:0; line-height:1.6}
+    header,footer{padding:1rem 1.25rem}
+    header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee}
+    nav a{margin-right:1rem;text-decoration:none;color:#0b6b3a}
+    .container{max-width:980px;margin:0 auto;padding:1.25rem}
+    .hero{padding:2rem 0}
+    .cta{display:inline-block;padding:.8rem 1.1rem;border-radius:.75rem;border:0;background:#0b6b3a;color:#fff;font-weight:600;cursor:pointer}
+    .btn{display:inline-block;padding:.8rem 1rem;border-radius:.5rem;background:#0b6b3a;color:#fff;text-decoration:none}
+    .muted{color:#666}
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+<header>
+  <div><a href="/" class="logo" style="font-weight:700;color:#0b6b3a;text-decoration:none">Domy v Itálii</a></div>
+  <nav>
+    <a href="/">Úvod</a>
+    <a href="/come-comprare-casa-7-step/">7 kroků</a>
+    <a href="/grazie/">Grazie</a>
+  </nav>
+</header>
+
+<main class="container">
+  {% block content %}{% endblock %}
+</main>
+
+<footer>
+  <div class="muted">© {{ (new Date()).getFullYear() }} Creavita s.r.o.</div>
+</footer>
+
+<script src="/assets/js/checkout.js" defer></script>
+{% block scripts %}{% endblock %}
+</body>
 </html>

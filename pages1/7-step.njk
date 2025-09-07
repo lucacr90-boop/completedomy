@@ -1,65 +1,22 @@
 ---
-layout: base.njk
-title: "Come comprare casa in Italia in 7 step"
-permalink: "/come-comprare-casa-7-step/"
+layout: layouts/base.njk
+title: Come comprare casa in Italia — 7 step
+permalink: /come-comprare-casa-7-step/
+description: Guida pratica in 7 passi per comprare casa in Italia come cittadino UE.
 ---
 
-<header class="page-header">
-  <h1>Come comprare casa in Italia in 7 step</h1>
-  <p class="subtitle">7 step veloci per rendere il tuo sogno realtà</p>
-</header>
+<section class="hero">
+  <h1>Guida in 7 step</h1>
+  <p>Versione PDF scaricabile (CZ) con processo, checklist e contatti utili.</p>
+  <button id="buy-pdf" class="cta">Acquista la guida (99 CZK)</button>
+</section>
 
-<main class="container">
-  <p>
-    In questa guida trovi gli step essenziali per muoverti con sicurezza:
-    documenti, budget, zona, offerta, proposta, rogito e post-acquisto.
-  </p>
-
-  <p>
-    La versione completa (PDF) include checklist, modelli e link utili.
-    Acquistala per <strong>10 CZK</strong> e scaricala subito.
-  </p>
-
-  <p><em>Buona lettura! Scarica la guida completa in PDF.</em></p>
-
-  <button id="buyBtn" class="btn btn-primary">Acquista e scarica il PDF (10 CZK)</button>
-  <p id="buyError" style="display:none;color:#b00020;margin-top:.5rem">Errore. Riprova.</p>
-
-  <p class="mt-2">
-    Hai già acquistato? <a id="getDownload" href="#" rel="nofollow">Scarica di nuovo la guida</a>
-  </p>
-</main>
-
-{% block scripts %}
-<script>
-(function(){
-  const btn = document.getElementById('buyBtn');
-  const err = document.getElementById('buyError');
-  const link = document.getElementById('getDownload');
-
-  if (btn) {
-    btn.addEventListener('click', async () => {
-      try {
-        btn.disabled = true; err.style.display='none';
-        const r = await fetch('/.netlify/functions/create-checkout', { method: 'POST' });
-        const d = await r.json();
-        if (d.url) location.href = d.url; else throw new Error('no url');
-      } catch(e) {
-        err.style.display='block'; btn.disabled = false;
-      }
-    });
-  }
-
-  if (link) {
-    link.addEventListener('click', async (e) => {
-      e.preventDefault();
-      try {
-        const r = await fetch('/.netlify/functions/get-download-link');
-        const d = await r.json();
-        if (d.url) location.href = d.url; else alert('Nessun download disponibile');
-      } catch(e) { alert('Connessione non riuscita'); }
-    });
-  }
-})();
-</script>
-{% endblock %}
+<section>
+  <h2>Cosa trovi nella guida</h2>
+  <ul>
+    <li>Iter completo legale & pratico</li>
+    <li>Documenti necessari</li>
+    <li>Costi tipici, tasse e tempistiche</li>
+    <li>Check finale prima del rogito</li>
+  </ul>
+</section>

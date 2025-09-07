@@ -1,13 +1,36 @@
 ---
-layout: base.njk
-title: "Grazie!"
-permalink: "/grazie/"
+layout: layouts/base.njk
+title: Grazie per l’acquisto
+permalink: /grazie/
 ---
 
-<main class="container">
-  <h1>Grazie per l’acquisto!</h1>
-  <p>Il tuo pagamento è stato registrato. Puoi scaricare la guida qui sotto:</p>
-  <p>
-    <a class="btn btn-primary" href="/.netlify/functions/get-download-link">Scarica la guida (PDF)</a>
-  </p>
-</main>
+<h1>Grazie! 🎉</h1>
+<p>Se il pagamento è andato a buon fine, apparirà il pulsante per scaricare la guida.</p>
+<div id="download-zone"></div>
+
+{% block scripts %}
+<script>
+(async () => {
+  const p = new URLSearchParams(location.search);
+  const session_id = p.get('session_id');
+  if (!session_id) return;
+
+  try {
+    const r = await fetch('/.netlify/functions/get-download-link?session_id=' + encodeURIComponent(session_id));
+    const data = await r.json();
+    if (data && data.url) {
+      const a = document.createElement('a');
+      a.href = data.url;
+      a.textContent = 'Scarica la guida in PDF';
+      a.className = 'btn';
+      a.rel = 'nofollow';
+      document.getElementById('download-zone').appendChild(a);
+    } else {
+      document.getElementById('download-zone').textContent = 'Pagamento non ancora confermato. Ricarica tra qualche secondo.';
+    }
+  } catch (e) {
+    document.getElementById('download-zone').textContent = 'Errore nel recupero del link. Riprova.';
+  }
+})();
+</script>
+{% endblock %}
