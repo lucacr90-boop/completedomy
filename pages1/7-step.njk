@@ -1,0 +1,54 @@
+---
+layout: layouts/base.njk
+title: "Come comprare casa in Italia in 7 step"
+subtitle: "7 step veloci per rendere il tuo sogno realtà"
+permalink: "/come-comprare-casa-7-step/"
+description: "Guida pratica con checklist e modelli per comprare casa in Italia."
+---
+
+<article>
+  <p>In questa guida trovi gli step essenziali per muoverti con sicurezza:
+    documenti, budget, zona, offerta, proposta, rogito e post-acquisto. La prima cosada fare?
+    Sapere bene quali documenti avere per la pratica
+    step 1. Il codice fiscale....</p>
+  <p>La versione completa (PDF) include checklist, modelli e link utili.
+    Acquistala per 10 CZK e scaricala subito.
+    <br>Buona lettura!
+  </p>
+</article>
+
+<div style="margin:1.5rem 0">
+  <button id="buyBtn" aria-label="Acquista e scarica il PDF">
+    Acquista e scarica il PDF (99&nbsp;CZK)
+  </button>
+  <p id="buyError" style="display:none;color:#b00020;margin-top:.5rem">
+    Si è verificato un errore. Riprova tra poco.
+  </p>
+</div>
+
+{% block scripts %}
+<script>
+  (function() {
+    const btn = document.getElementById('buyBtn');
+    const err = document.getElementById('buyError');
+    if (!btn) return;
+
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      err.style.display = 'none';
+      try {
+        const res = await fetch('/.netlify/functions/create-checkout', { method: 'POST' });
+        const data = await res.json();
+        if (data && data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error('Missing checkout URL');
+        }
+      } catch (e) {
+        err.style.display = 'block';
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>
+{% endblock %}

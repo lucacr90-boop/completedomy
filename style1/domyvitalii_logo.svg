@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Vrstva_2" data-name="Vrstva 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 759.99 616.09">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #4d4d4d;
+      }
+
+      .cls-2 {
+        font-family: YuGothicUI-Regular, 'Yu Gothic UI';
+        font-size: 199.96px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <g>
+      <g>
+        <polygon class="cls-1" points="388.37 0 16.76 109.77 16.76 126.44 388.37 16.57 388.37 0"/>
+        <polygon class="cls-1" points="388.37 0 759.99 109.77 759.99 126.44 388.37 16.57 388.37 0"/>
+      </g>
+      <text class="cls-2" transform="translate(0 312.66)"><tspan x="0" y="0">DOMY V</tspan></text>
+      <g>
+        <path class="cls-1" d="m39.34,616.09h-22.58v-243.5h22.58v243.5Z"/>
+        <path class="cls-1" d="m172.3,393.31v222.78h-22.58v-222.78h-70.13v-20.72h163.01v20.72h-70.3Z"/>
+        <path class="cls-1" d="m426.49,616.09l-26.83-72h-104.43l-26.15,72h-25.13l92.71-243.5h22.75l92.21,243.5h-25.13Zm-74.2-200.88c-.79-2.15-1.61-4.64-2.46-7.47-.85-2.83-1.56-6.05-2.12-9.68h-.68c-.68,3.63-1.44,6.85-2.29,9.68-.85,2.83-1.67,5.32-2.46,7.47l-39.39,108.33h89.14l-39.73-108.33Zm12.62-70.31h86.72v17h-86.72v-17Z"/>
+        <path class="cls-1" d="m490,616.09v-243.5h22.58v222.95h97.81v20.55h-120.39Z"/>
+        <path class="cls-1" d="m674.07,616.09h-22.58v-243.5h22.58v243.5Z"/>
+        <path class="cls-1" d="m755.03,616.09h-22.58v-243.5h22.58v243.5Z"/>
+      </g>
+    </g>
+  </g>
+</svg>
