@@ -5,3 +5,4 @@ node_modules
 .netlify/
 # Local Netlify folder
 .netlify
+maintenance.html
