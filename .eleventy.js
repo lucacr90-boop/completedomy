@@ -1,23 +1,30 @@
 ﻿module.exports = function (cfg) {
   // Cartelle sorgenti → nomi storici usati nel markup
-  cfg.addPassthroughCopy({ "style1": "style" });
-  cfg.addPassthroughCopy({ "imagebox1": "imagebox" });
-  cfg.addPassthroughCopy({ "jsscripts1": "jscripts" });
-  cfg.addPassthroughCopy({ "igm1": "img" });               // icone/logo reali
+  cfg.addPassthroughCopy({ style1: "style" });
+  cfg.addPassthroughCopy({ imagebox1: "imagebox" });
+  cfg.addPassthroughCopy({ jsscripts1: "jscripts" });
+  cfg.addPassthroughCopy({ igm1: "img" }); // icone/logo reali
 
-  // Font e TinyMCE (se presenti nelle cartelle “1”)
+  // Font e TinyMCE (adegua al nome reale della cartella)
   cfg.addPassthroughCopy({ "style1/fonts": "style/fonts" });
-  cfg.addPassthroughCopy({ "jsscripts1/tiny_mce6": "jscripts/tiny_mce6" });
+  cfg.addPassthroughCopy({ "jsscripts1/tiny_mce61": "jscripts/tiny_mce61" });
 
-  // (RIMOSSO qualsiasi copia di index1.html → index.html per non sovrascrivere la home)
+  // NIENTE copia forzata di index1.html -> index.html
   // cfg.addPassthroughCopy({ "index1.html": "index.html" });
 
-  cfg.addCollection("posts", c => c.getFilteredByGlob("posts/*.{md,njk}"));
+  // Collezione post (md o njk)
+  cfg.addCollection("posts", (c) => c.getFilteredByGlob("posts/*.{md,njk}"));
 
   return {
-    dir: { input: ".", includes: "_includes", data: "_data", layouts: "_includes/layouts", output: "_site" },
-    templateFormats: ["njk", "html", "md"],
+    dir: {
+      input: ".",
+      includes: "_includes",
+      layouts: "_includes/layouts", // dove sta base.njk
+      data: "_data",
+      output: "_site",
+    },
+    templateFormats: ["njk", "md", "html"],
     htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk"
+    markdownTemplateEngine: "njk",
   };
 };
