@@ -1,33 +1,13 @@
 ---
 layout: layouts/base.njk
-title: "Grazie per l'acquisto"
+title: "Grazie!"
 permalink: "/grazie/"
-description: "Conferma pagamento e link di download."
 ---
 
-<p>Grazie! Stiamo verificando il pagamento e preparando il tuo link di download…</p>
-<div id="result" style="margin-top:1rem"></div>
-
-{% block scripts %}
-<script>
-(async () => {
-  const params = new URLSearchParams(window.location.search);
-  const session_id = params.get('session_id');
-  const result = document.getElementById('result');
-
-  if (!session_id) { result.textContent = 'Sessione non trovata.'; return; }
-
-  try {
-    const r = await fetch('/.netlify/functions/get-download-link?session_id=' + encodeURIComponent(session_id));
-    const data = await r.json();
-    if (data && data.url) {
-      result.innerHTML = '<a href="' + data.url + '">Scarica ora il PDF</a> (link temporaneo)';
-    } else {
-      result.textContent = 'Pagamento non trovato o non completato.';
-    }
-  } catch (e) {
-    result.textContent = 'Errore durante la verifica. Riprova.';
-  }
-})();
-</script>
-{% endblock %}
+<main class="container">
+  <h1>Grazie per l’acquisto!</h1>
+  <p>Il tuo pagamento è stato registrato. Puoi scaricare la guida qui sotto:</p>
+  <p>
+    <a class="btn btn-primary" href="/.netlify/functions/get-download-link">Scarica la guida (PDF)</a>
+  </p>
+</main>

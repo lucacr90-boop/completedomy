@@ -1,54 +1,65 @@
 ---
 layout: layouts/base.njk
 title: "Come comprare casa in Italia in 7 step"
-subtitle: "7 step veloci per rendere il tuo sogno realtà"
 permalink: "/come-comprare-casa-7-step/"
-description: "Guida pratica con checklist e modelli per comprare casa in Italia."
 ---
 
-<article>
-  <p>In questa guida trovi gli step essenziali per muoverti con sicurezza:
-    documenti, budget, zona, offerta, proposta, rogito e post-acquisto. La prima cosada fare?
-    Sapere bene quali documenti avere per la pratica
-    step 1. Il codice fiscale....</p>
-  <p>La versione completa (PDF) include checklist, modelli e link utili.
-    Acquistala per 10 CZK e scaricala subito.
-    <br>Buona lettura!
-  </p>
-</article>
+<header class="page-header">
+  <h1>Come comprare casa in Italia in 7 step</h1>
+  <p class="subtitle">7 step veloci per rendere il tuo sogno realtà</p>
+</header>
 
-<div style="margin:1.5rem 0">
-  <button id="buyBtn" aria-label="Acquista e scarica il PDF">
-    Acquista e scarica il PDF (99&nbsp;CZK)
-  </button>
-  <p id="buyError" style="display:none;color:#b00020;margin-top:.5rem">
-    Si è verificato un errore. Riprova tra poco.
+<main class="container">
+  <p>
+    In questa guida trovi gli step essenziali per muoverti con sicurezza:
+    documenti, budget, zona, offerta, proposta, rogito e post-acquisto.
   </p>
-</div>
+
+  <p>
+    La versione completa (PDF) include checklist, modelli e link utili.
+    Acquistala per <strong>10 CZK</strong> e scaricala subito.
+  </p>
+
+  <p><em>Buona lettura! Scarica la guida completa in PDF.</em></p>
+
+  <button id="buyBtn" class="btn btn-primary">Acquista e scarica il PDF (10 CZK)</button>
+  <p id="buyError" style="display:none;color:#b00020;margin-top:.5rem">Errore. Riprova.</p>
+
+  <p class="mt-2">
+    Hai già acquistato? <a id="getDownload" href="#" rel="nofollow">Scarica di nuovo la guida</a>
+  </p>
+</main>
 
 {% block scripts %}
 <script>
-  (function() {
-    const btn = document.getElementById('buyBtn');
-    const err = document.getElementById('buyError');
-    if (!btn) return;
+(function(){
+  const btn = document.getElementById('buyBtn');
+  const err = document.getElementById('buyError');
+  const link = document.getElementById('getDownload');
 
+  if (btn) {
     btn.addEventListener('click', async () => {
-      btn.disabled = true;
-      err.style.display = 'none';
       try {
-        const res = await fetch('/.netlify/functions/create-checkout', { method: 'POST' });
-        const data = await res.json();
-        if (data && data.url) {
-          window.location.href = data.url;
-        } else {
-          throw new Error('Missing checkout URL');
-        }
-      } catch (e) {
-        err.style.display = 'block';
-        btn.disabled = false;
+        btn.disabled = true; err.style.display='none';
+        const r = await fetch('/.netlify/functions/create-checkout', { method: 'POST' });
+        const d = await r.json();
+        if (d.url) location.href = d.url; else throw new Error('no url');
+      } catch(e) {
+        err.style.display='block'; btn.disabled = false;
       }
     });
-  })();
+  }
+
+  if (link) {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      try {
+        const r = await fetch('/.netlify/functions/get-download-link');
+        const d = await r.json();
+        if (d.url) location.href = d.url; else alert('Nessun download disponibile');
+      } catch(e) { alert('Connessione non riuscita'); }
+    });
+  }
+})();
 </script>
 {% endblock %}
