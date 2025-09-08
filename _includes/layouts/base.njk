@@ -18,10 +18,10 @@
   <meta name="description" content="{{ description | default('Domy v Itálii – Poradenství, nabídky a průvodce') }}" />
 
   {# CSS: mappato in .eleventy.js come { style1: "style" } #}
-  <link rel="stylesheet" href="/style1/site.css" />
-  <link rel="stylesheet" href="/style1/style_edit22.css" />
-  <link rel="stylesheet" href="/style1/style58.css" />
-  <link rel="stylesheet" href="/imagebox1/imagebox_3.css" />
+  <link rel="stylesheet" href="/style/site.css" />
+  <link rel="stylesheet" href="/style/style_edit22.css" />
+  <link rel="stylesheet" href="/style/style58.css" />
+  <link rel="stylesheet" href="/imagebox/imagebox_3.css" />
   
   {# Stripe (solo preconnect qui; lo <script> lo mettiamo in fondo con defer) #}
   <link rel="preconnect" href="https://js.stripe.com" />
@@ -45,23 +45,23 @@
   </header>
 
   <section class="banner">
-  <img src="/banners1/webbanner_1.jpg" alt="Vista mare Italia">
-<img src="/banners1/webbanner_2.jpg" alt="Italian seaside coastline with blue water and gentle waves, houses lining the shore under a bright sky, tranquil and welcoming atmosphere, no visible text" class="mobile">
+  <img src="/banners/webbanner_1.jpg" alt="Vista mare Italia">
+<img src="/banners/webbanner_2.jpg" alt="Italian seaside coastline with blue water and gentle waves, houses lining the shore under a bright sky, tranquil and welcoming atmosphere, no visible text" class="mobile">
   <main class="container">
     {% block content %}{% endblock %}
   </main>
 <footer class="container muted">© Domy 
   <div class="social">
     <a href="https://www.facebook.com/Domyvitalii" target="_blank" rel="noopener">
-      <img src="/img1/fb2.png" alt="Facebook Domy v Itálii" width="24" height="24">
+      <img src="/img/fb2.png" alt=Facebook logo in white centered on a circular blue background representing Domy v Itálii social media presence modern and friendly design no visible text evokes a welcoming and approachable atmosphere width="24" height="24">
     </a>
     <a href="https://www.instagram.com/domy_v_italii" target="_blank" rel="noopener">
-      <img src="/img1/ig2.png" alt="Instagram logo in white on a circular purple background representing Domy v Itálii social media, simple and modern design, no visible text, friendly and inviting tone" width="24" height="24">
+      <img src="/img/ig2.png" alt="Instagram logo in white centered on a circular purple background, representing Domy v Itálii social media presence, modern and friendly design, no visible text, evokes a welcoming and approachable atmosphere" width="24" height="24">
   </footer>
 
-  <script src="/jsscripts1/support60.js"></script>
-  <script src="/jsscripts1/tiny_mce6/tinymce.min.js"></script>
-  <script src="/jsscripts1/checkout.js" defer></script>
+  <script src="/jsscripts/support60.js"></script>
+  <script src="/jsscripts/tiny_mce6/tinymce.min.js"></script>
+  <script src="/jsscripts/checkout.js" defer></script>
 
 
   {# JS (mappato in .eleventy.js come { jsscripts1: "jscripts" }) #}
