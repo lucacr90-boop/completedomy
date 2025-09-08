@@ -1,0 +1,9 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "block-no-empty": true,
+    "font-family-no-missing-generic-family-keyword": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null
+  }
+}

@@ -1,19 +1,25 @@
-﻿module.exports = function (cfg) {
+﻿module.exports = function (eleventyConfig) {
   // Cartelle sorgenti → nomi storici usati nel markup
-  cfg.addPassthroughCopy({ style1: "style" });
-  cfg.addPassthroughCopy({ imagebox1: "imagebox" });
-  cfg.addPassthroughCopy({ jsscripts1: "jscripts" });
-  cfg.addPassthroughCopy({ igm1: "img" }); // icone/logo reali
+  eleventyConfig.addPassthroughCopy({ style1: "style" });
+  eleventyConfig.addPassthroughCopy({ imagebox1: "imagebox" });
+  eleventyConfig.addPassthroughCopy({ jsscripts1: "jscripts" });
+  eleventyConfig.addPassthroughCopy({ igm1: "img" }); // icone/logo reali
+  eleventyConfig.addPassthroughCopy({ banners1: "banners" });
+  eleventyConfig.addPassthroughCopy({ favicon1: "favicon" });
 
   // Font e TinyMCE (adegua al nome reale della cartella)
-  cfg.addPassthroughCopy({ "style1/fonts": "style/fonts" });
-  cfg.addPassthroughCopy({ "jsscripts1/tiny_mce61": "jscripts/tiny_mce61" });
+  eleventyConfig.addPassthroughCopy({ "style1/fonts": "style/fonts" });
+  eleventyConfig.addPassthroughCopy({
+    "jsscripts1/tiny_mce61": "jscripts/tiny_mce61",
+  });
 
   // NIENTE copia forzata di index1.html -> index.html
-  // cfg.addPassthroughCopy({ "index1.html": "index.html" });
+  // eleventyConfig.addPassthroughCopy({ "index1.html": "index.html" });
 
   // Collezione post (md o njk)
-  cfg.addCollection("posts", (c) => c.getFilteredByGlob("posts/*.{md,njk}"));
+  eleventyConfig.addCollection("posts", (c) =>
+    c.getFilteredByGlob("posts/*.{md,njk}"),
+  );
 
   return {
     dir: {
